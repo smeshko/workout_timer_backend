@@ -12,7 +12,7 @@ final class ExerciseSet: Model {
     
     @ID() var id: UUID?
     @Field(key: FieldKeys.duration) var duration: Double
-    @Field(key: FieldKeys.exericseId) var exercise: Exercise
+    @Parent(key: FieldKeys.exericseId) var exercise: Exercise
     @Parent(key: FieldKeys.workoutId) var workout: Workout
 
     init() {}
@@ -20,7 +20,7 @@ final class ExerciseSet: Model {
     init(id: UUID? = nil, duration: Double, exerciseId: UUID, workoutId: UUID) {
         self.id = id
         self.duration = duration
-        self.exercise.id = exerciseId
+        self.$exercise.id = exerciseId
         self.$workout.id = workoutId
     }
 }
