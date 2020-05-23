@@ -24,3 +24,19 @@ final class ExerciseSet: Model {
         self.$workout.id = workoutId
     }
 }
+
+extension ExerciseSet: ListContentRepresentable {
+    struct ListItem: Content {
+        var id: String
+        var duration: Double
+        var exercise: Exercise
+        
+        init(model: ExerciseSet) {
+            self.id = model.id!.uuidString
+            self.duration = model.duration
+            self.exercise = model.exercise
+        }
+    }
+    
+    var listContent: ListItem { .init(model: self) }
+}

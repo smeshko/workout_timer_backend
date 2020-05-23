@@ -4,6 +4,8 @@ struct WorkoutRouter: RouteCollection {
     let controller = WorkoutController()
     
     func boot(routes: RoutesBuilder) throws {
-        routes.get("workouts", use: controller.getWorkouts)
+        let workoutsApi = routes.grouped("api")
+        let workoutController = WorkoutController()
+        workoutController.setupRoutes(routes: workoutsApi, on: "workouts")
     }
 }
