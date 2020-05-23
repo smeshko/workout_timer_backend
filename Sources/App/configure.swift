@@ -10,8 +10,11 @@ public func configure(_ app: Application) throws {
     // Configure SQLite database
     app.databases.use(.sqlite(.file("db.sqlite")), as: .sqlite)
 
-    // Configure migrations
-    app.migrations.add(CreateTodo())
     
-    try routes(app)
+    // Configure modules
+    let modules: [Module] = [
+        WorkoutModule()
+    ]
+    
+    try modules.forEach { try $0.configure(app) }
 }
