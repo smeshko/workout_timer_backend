@@ -29,14 +29,16 @@ extension ExerciseSet: ListContentRepresentable {
     struct ListItem: Content {
         var id: String
         var duration: Double
-        var exercise: Exercise
+        var exercise: Exercise.GetContent?
         
         init(model: ExerciseSet) {
             self.id = model.id!.uuidString
             self.duration = model.duration
-            self.exercise = model.exercise
+            self.exercise = model.exercise.getContent
         }
     }
     
-    var listContent: ListItem { .init(model: self) }
+    var listContent: ListItem {
+        .init(model: self)
+    }
 }

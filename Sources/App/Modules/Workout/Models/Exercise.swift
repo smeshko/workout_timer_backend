@@ -25,3 +25,19 @@ final class Exercise: Model {
         self.imageKey = imageKey
     }
 }
+
+extension Exercise: GetContentRepresentable {
+    struct GetContent: Content {
+        var id: String
+        var name: String
+        
+        init(model: Exercise) {
+            self.id = model.id!.uuidString
+            self.name = model.name
+        }
+    }
+    
+    var getContent: GetContent {
+        .init(model: self)
+    }
+}

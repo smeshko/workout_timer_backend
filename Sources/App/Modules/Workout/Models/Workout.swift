@@ -37,11 +37,10 @@ extension Workout: APIRepresentable {
         }
     }
     
-    var listContent: ListItem { .init(model: self) }
-
     struct GetContent: Content {
         var id: String
         var name: String
+        var exerciseSets: [ExerciseSet.ListItem]?
         
         init(model: Workout) {
             self.id = model.id!.uuidString
@@ -49,18 +48,12 @@ extension Workout: APIRepresentable {
         }
     }
     
-    var getContent: GetContent { .init(model: self) }
-
     struct CreateContent: ValidatableContent {
         var name: String
         
         static func validations(_ validations: inout Validations) {
             validations.add("name", as: String.self, is: !.empty)
         }
-    }
-    
-    func create(_ content: CreateContent) throws {
-        self.name = content.name
     }
 
     struct UpdateContent: ValidatableContent {
@@ -71,10 +64,6 @@ extension Workout: APIRepresentable {
         }
     }
     
-    func update(_ content: UpdateContent) throws {
-        self.name = content.name
-    }
-
     struct PatchContent: ValidatableContent {
         var name: String
         
@@ -82,8 +71,24 @@ extension Workout: APIRepresentable {
             validations.add("name", as: String.self, is: !.empty)
         }
     }
+
+    var listContent: ListItem {
+        .init(model: self)
+    }
     
-    func update(_ content: PatchContent) throws {
+    var getContent: GetContent {
+        .init(model: self)
+    }
+    
+    func create(_ content: CreateContent) throws {
+        self.name = content.name
+    }
+
+    func update(_ content: UpdateContent) throws {
+        self.name = content.name
+    }
+    
+    func patch(_ content: PatchContent) throws {
         self.name = content.name
     }
 }
