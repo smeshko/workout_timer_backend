@@ -30,5 +30,5 @@ COPY --from=build --chown=vapor:vapor /build/Public /app/Public
 
 USER vapor
 ENTRYPOINT ["./Run"]
-CMD ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
+CMD ["serve", "--env", "development", "--hostname", "0.0.0.0", "--port", "8080"]
  
