@@ -33,19 +33,12 @@ struct WorkoutsMigration_v1_0_0: Migration {
                             onUpdate: .cascade)
                 .create(),
         ])
-            .flatMap {
-                let exercises =
-                    [
-                        Exercise(name: "Freestyle Jumping", image: "/images/exercises/jumprope/freestyle.png"),
-                        Exercise(name: "Double Unders", image: "/images/exercises/jumprope/double-unders.png")
-                ]
-                
-                return exercises.create(on: database)
-        }
     }
     
-    func revert(on database: Database) -> EventLoopFuture<Void> { database.eventLoop.flatten([
-        database.schema(Workout.schema).delete(),
-        database.schema(Exercise.schema).delete(), ])
+    func revert(on database: Database) -> EventLoopFuture<Void> {
+        database.eventLoop.flatten([
+            database.schema(Workout.schema).delete(),
+            database.schema(Exercise.schema).delete(),
+        ])
     }
 }
