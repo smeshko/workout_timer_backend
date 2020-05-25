@@ -19,8 +19,8 @@ struct WorkoutsMigration_v1_0_0: Migration {
             database.schema(ExerciseSet.schema)
                 .id()
                 .field(ExerciseSet.FieldKeys.duration, .double, .required)
-                .field(ExerciseSet.FieldKeys.exericseId, .string, .required)
-                .field(ExerciseSet.FieldKeys.workoutId, .string, .required)
+                .field(ExerciseSet.FieldKeys.exericseId, .uuid, .required)
+                .field(ExerciseSet.FieldKeys.workoutId, .uuid, .required)
                 .foreignKey(ExerciseSet.FieldKeys.exericseId,
                             references: Exercise.schema,
                             .id,

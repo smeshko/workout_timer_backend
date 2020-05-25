@@ -47,6 +47,15 @@
         }
       },
       {
+        "package": "fluent-postgres-driver",
+        "repositoryURL": "https://github.com/vapor/fluent-postgres-driver",
+        "state": {
+          "branch": null,
+          "revision": "2df7722d2bddc470a9b7080b8d88c9976f237a81",
+          "version": "2.0.0-rc.2"
+        }
+      },
+      {
         "package": "fluent-sqlite-driver",
         "repositoryURL": "https://github.com/vapor/fluent-sqlite-driver.git",
         "state": {
@@ -80,6 +89,24 @@
           "branch": null,
           "revision": "71e52d765311b8cbedc3412b3d4e111a49c7ec2b",
           "version": "1.0.2"
+        }
+      },
+      {
+        "package": "postgres-kit",
+        "repositoryURL": "https://github.com/vapor/postgres-kit.git",
+        "state": {
+          "branch": null,
+          "revision": "e43a32baec80ebbcfed4d0330d0be50eb73434c7",
+          "version": "2.0.1"
+        }
+      },
+      {
+        "package": "postgres-nio",
+        "repositoryURL": "https://github.com/vapor/postgres-nio.git",
+        "state": {
+          "branch": null,
+          "revision": "25aa31fdd55ea119edee270ce4bd7bd4bd59fdf7",
+          "version": "1.1.0"
         }
       },
       {
