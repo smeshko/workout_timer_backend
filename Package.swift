@@ -18,6 +18,7 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent-postgres-driver", from: "2.0.0-rc"),
         .package(url: "https://github.com/binarybirds/liquid.git", from: "1.0.0"),
         .package(url: "https://github.com/binarybirds/liquid-local-driver.git", from: "1.0.0"),
+//        .package(url: "https://github.com/binarybirds/liquid-aws-s3-driver.git", from: "1.0.0"),
         .package(url: "https://github.com/binarybirds/spec.git", from: "1.0.0"),
     ],
     targets: [
@@ -27,6 +28,7 @@ let package = Package(
             .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver"),
             .product(name: "Liquid", package: "liquid"),
             .product(name: "LiquidLocalDriver", package: "liquid-local-driver"),
+//            .product(name: "LiquidAwsS3Driver", package: "liquid-aws-s3-driver"),
             .product(name: "Vapor", package: "vapor"),
         ]),
         .target(name: "Run", dependencies: [
