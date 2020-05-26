@@ -1,4 +1,5 @@
 @testable import App
+import FluentSQLiteDriver
 import XCTVapor
 
 extension XCTApplicationTester {
@@ -18,9 +19,8 @@ extension XCTApplicationTester {
 open class AppTestCase: XCTestCase {
     func createTestApp() throws -> Application {
         let app = Application(.testing)
+        app.databases.use(.sqlite(.memory), as: .sqlite, isDefault: true)
         try configure(app)
-        app.databases.use(.sqlite(.memory), as: .sqlite)
-        app.databases.default(to: .sqlite)
         try app.autoMigrate().wait()
         return app
     }

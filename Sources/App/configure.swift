@@ -1,5 +1,4 @@
 import Fluent
-import FluentSQLiteDriver
 import FluentPostgresDriver
 import Vapor
 import Liquid
@@ -13,6 +12,7 @@ extension Environment {
 
 // Called before your application initializes.
 public func configure(_ app: Application) throws {
+    
     // Serves files from `Public/` directory
     app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
     app.routes.defaultMaxBodySize = "10mb"
@@ -26,9 +26,7 @@ public func configure(_ app: Application) throws {
         app.databases.use(try .postgres(url: Environment.get("DATABASE_URL") ?? ""), as: .psql)
     default: break
     }
-    
-    
-    
+
     // Configure modules
     let modules: [Module] = [
         WorkoutModule()
