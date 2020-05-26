@@ -15,12 +15,11 @@ public func configure(_ app: Application) throws {
                                 publicPath: app.directory.publicDirectory,
                                 workDirectory: "assets"), as: .local)
     
-//    switch app.environment {
-//    case .production, .development:
+    switch app.environment {
+    case .production, .development:
         app.databases.use(try .postgres(url: Environment.get("DATABASE_URL") ?? ""), as: .psql)
-//    default: break
-//    }
-    
+    default: break
+    }
 
     // Configure modules
     let modules: [Module] = [
