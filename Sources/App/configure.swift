@@ -33,4 +33,6 @@ public func configure(_ app: Application) throws {
     ]
     
     try modules.forEach { try $0.configure(app) }
+    
+    try app.autoMigrate().wait()
 }
