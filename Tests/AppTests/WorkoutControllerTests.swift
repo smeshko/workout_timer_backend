@@ -4,14 +4,12 @@ import Fluent
 
 final class WorkoutControllerTests: AppTestCase {
     func testGetWorkouts() throws {
-        let app = Application(.testing)
+        let app = try createTestApp()
         defer { app.shutdown() }
-
-        try configure(app)
 
         
         try app
-            .describe("Blog posts should return ok")
+            .describe("Workouts should return ok")
             .get("/api/workouts")
             .expect(.ok)
             .expect(.json)
