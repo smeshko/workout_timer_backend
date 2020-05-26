@@ -17,12 +17,7 @@ jobs:
       image: vapor/swift:5.2.2-xenial-ci
     runs-on: ubuntu-latest
     steps:
-    - name: Setup PostgreSQL
-      uses: Harmon758/postgresql-action@v1.0.0
-      with:
-        postgresql db: testingdb
-        postgresql user: testinguser
-        postgresql password: password
+    - run: apt update -y; apt install -y libsqlite3-dev
     - uses: actions/checkout@v2
     - run: swift test --enable-test-discovery --sanitize=thread
 
