@@ -26,7 +26,7 @@ public func configure(_ app: Application) throws {
         database: "dcbujqdvobjell"
     )
     
-    app.databases.use(.postgres(configuration: config), as: .psql)
+    app.databases.use(try .postgres(url: Environment.get("DATABASE_URL") ?? ""), as: .psql)
 
     // Configure modules
     let modules: [Module] = [
