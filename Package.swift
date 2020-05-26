@@ -14,7 +14,7 @@ let package = Package(
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.5.1"),
         .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0-rc.2.2"),
-        .package(url: "https://github.com/vapor/fluent-sqlite-driver.git", from: "4.0.0-rc.1.2"),
+//        .package(url: "https://github.com/vapor/fluent-sqlite-driver.git", from: "4.0.0-rc.1.2"),
         .package(url: "https://github.com/vapor/fluent-postgres-driver", from: "2.0.0-rc"),
         .package(url: "https://github.com/binarybirds/liquid.git", from: "1.0.0"),
         .package(url: "https://github.com/binarybirds/liquid-local-driver.git", from: "1.0.0"),
@@ -24,7 +24,7 @@ let package = Package(
     targets: [
         .target(name: "App", dependencies: [
             .product(name: "Fluent", package: "fluent"),
-            .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver"),
+//            .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver"),
             .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver"),
             .product(name: "Liquid", package: "liquid"),
             .product(name: "LiquidLocalDriver", package: "liquid-local-driver"),
