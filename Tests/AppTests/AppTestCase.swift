@@ -19,6 +19,7 @@ extension XCTApplicationTester {
 open class AppTestCase: XCTestCase {
     func createTestApp() throws -> Application {
         let app = Application(.testing)
+        app.databases.use(try .postgres(url: Environment.get("DATABASE_URL")!), as: .psql, isDefault: true)
         try configure(app)
         return app
     }

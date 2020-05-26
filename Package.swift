@@ -11,7 +11,6 @@ let package = Package(
         .library(name: "App", targets: ["App"]),
     ],
     dependencies: [
-        // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.5.1"),
         .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0-rc.2.2"),
 //        .package(url: "https://github.com/vapor/fluent-sqlite-driver.git", from: "4.0.0-rc.1.2"),
@@ -36,6 +35,7 @@ let package = Package(
         ]),
         .testTarget(name: "AppTests", dependencies: [
             .target(name: "App"),
+            
             .product(name: "XCTVapor", package: "vapor"),
             .product(name: "Spec", package: "spec"),
         ])
