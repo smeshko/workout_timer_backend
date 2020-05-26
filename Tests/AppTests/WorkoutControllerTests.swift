@@ -4,8 +4,11 @@ import Fluent
 
 final class WorkoutControllerTests: AppTestCase {
     func testGetWorkouts() throws {
-        let app = try createTestApp()
+        let app = Application(.testing)
         defer { app.shutdown() }
+
+        try configure(app)
+
         
         try app
             .describe("Blog posts should return ok")
