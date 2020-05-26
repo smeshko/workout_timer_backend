@@ -4,8 +4,13 @@ import Fluent
 
 final class WorkoutControllerTests: AppTestCase {
     func testGetWorkouts() throws {
-        let app = try createTestApp()
+//        let app = try createTestApp()
+        let app = Application(.testing)
         defer { app.shutdown() }
+
+        app.databases.use(try .postgres(url: Environment.get("DATABASE_URL")!), as: .psql, isDefault: true)
+        try configure(app)
+
 
         
         try app
