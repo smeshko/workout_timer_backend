@@ -9,5 +9,6 @@ struct UserRouter: RouteCollection {
         api.grouped(UserCredentialsAuthenticator())
             .post("login", use: controller.login)
         api.post("signup", use: controller.signup)
+        api.post("logout", use: controller.logout)
     }
 }

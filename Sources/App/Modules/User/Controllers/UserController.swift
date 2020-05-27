@@ -26,4 +26,9 @@ final class UserController {
             return token.create(on: req.db).map { token.getContent }
         }
     }
+    
+    func logout(req: Request) throws -> EventLoopFuture<HTTPStatus> {
+        req.auth.logout(User.self)
+        return req.eventLoop.makeSucceededFuture(.ok)
+    }
 }
