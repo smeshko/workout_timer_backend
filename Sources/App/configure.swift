@@ -29,7 +29,8 @@ public func configure(_ app: Application) throws {
 
     // Configure modules
     let modules: [Module] = [
-        WorkoutModule()
+        WorkoutModule(),
+        UserModule()
     ]
     
     try modules.forEach { try $0.configure(app) }
