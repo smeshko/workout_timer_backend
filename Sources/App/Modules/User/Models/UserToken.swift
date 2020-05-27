@@ -1,8 +1,14 @@
 import Vapor
 import Fluent
 
-final class UserToken: Model {
+final class UserToken: ModelTokenAuthenticatable {
     static let schema = "user_tokens"
+    static let valueKey = \UserToken.$value
+    static let userKey = \UserToken.$user
+    
+    var isValid: Bool {
+        true
+    }
     
     struct FieldKeys {
         static let value: FieldKey = "value"
@@ -23,8 +29,11 @@ final class UserToken: Model {
 }
 
 extension UserToken: GetContentRepresentable {
-    struct GetContent: Content { var id: String
+    
+    struct GetContent: Content {
+        var id: String
         var value: String
+    
         init(model: UserToken) {
             self.id = model.id!.uuidString
             self.value = model.value
