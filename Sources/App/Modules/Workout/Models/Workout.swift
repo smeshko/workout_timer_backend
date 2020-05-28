@@ -7,22 +7,25 @@ final class Workout: Model {
     struct FieldKeys {
         static let name: FieldKey = "name"
         static let image: FieldKey = "image"
-        static var imageKey: FieldKey = "image_key"
+        static let imageKey: FieldKey = "image_key"
+        static let category: FieldKey = "category_id"
     }
     
     @ID var id: UUID?
     @Field(key: FieldKeys.name) var name: String
     @Field(key: FieldKeys.image) var image: String
     @Field(key: FieldKeys.imageKey) var imageKey: String?
+    @OptionalParent(key: FieldKeys.category) var category: Category?
     @Children(for: \.$workout) var exercises: [ExerciseSet]
     
     init() {}
     
-    init(id: UUID? = nil, name: String, image: String, imageKey: String? = nil) {
+    init(id: UUID? = nil, name: String, image: String, imageKey: String? = nil, categoryId: UUID? = nil) {
         self.id = id
         self.name = name
         self.image = image
         self.imageKey = imageKey
+        self.$category.id = categoryId
     }
 }
 

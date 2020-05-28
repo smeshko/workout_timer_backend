@@ -1,6 +1,6 @@
 import Fluent
 
-struct WorkoutsMigration_v1_3_0: Migration {
+struct WorkoutsMigration_v1_5_0: Migration {
     
     let exercises =
         [

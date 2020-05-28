@@ -2,7 +2,7 @@ import Vapor
 import Fluent
 
 final class User: Model, Authenticatable {
-    static let schema = "user_users"
+    static let schema = "users"
     
     struct FieldKeys {
         static let email: FieldKey = "email"
