@@ -1,8 +1,8 @@
 import Vapor
 import Fluent
 
-struct WorkoutModule: Module {
-    var router: RouteCollection? { WorkoutRouter() }
+struct WorkoutsModule: Module {
+    var router: RouteCollection? { WorkoutsRouter() }
     
     var migrations: [Migration] {
         [

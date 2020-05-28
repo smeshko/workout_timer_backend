@@ -1,8 +1,8 @@
 import Fluent
 import Vapor
 
-struct UserModule: Module {
-    var router: RouteCollection? { UserRouter() }
+struct UsersModule: Module {
+    var router: RouteCollection? { UsersRouter() }
     
     var migrations: [Migration] {
         [

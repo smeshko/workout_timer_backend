@@ -1,6 +1,6 @@
 import Vapor
 
-struct UserRouter: RouteCollection {
+struct UsersRouter: RouteCollection {
     let controller = UsersController()
     
     func boot(routes: RoutesBuilder) throws {

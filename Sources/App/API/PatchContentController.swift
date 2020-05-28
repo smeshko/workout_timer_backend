@@ -2,7 +2,7 @@ import Vapor
 
 protocol PatchContentController: IdentifiableContentController where Model: PatchContentRepresentable {
     func update(_ req: Request) throws -> EventLoopFuture<Model.GetContent>
-    func setupUpdateRoute(routes: RoutesBuilder)
+    func setupPatchRoute(routes: RoutesBuilder)
 }
 
 extension PatchContentController {
