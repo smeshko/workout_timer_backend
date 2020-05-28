@@ -10,7 +10,7 @@ final class ImagesDriver {
         let path = try req.query.get(String.self, at: "imageKey")
         
         if req.application.shouldUseLocalStorage {
-            return req.eventLoop.makeSucceededFuture(try getLocalImage(at: path))
+            return req.eventLoop.makeSucceededFuture(try getLocalImage(at: path)).unwrap(or: Abort(.notFound))
         } else {
             return try getRemoteImage(at: path)
         }
@@ -18,13 +18,30 @@ final class ImagesDriver {
 }
 
 private extension ImagesDriver {
-    func getLocalImage(at path: String) throws -> Data {
-        let workPath = DirectoryConfiguration.detect().workingDirectory
+    
+    var publicPath: String { "Public" }
+    var placeholderPath: String { "images/placeholder.png" }
+    
+    var placeholderUrl: URL {
+        URL(fileURLWithPath: workPath)
+            .appendingPathComponent(publicPath)
+            .appendingPathComponent(placeholderPath)
+    }
+    
+    var workPath: String {
+        DirectoryConfiguration.detect().workingDirectory
+    }
+    
+    func getLocalImage(at path: String) throws -> Data? {
         let url = URL(fileURLWithPath: workPath)
-            .appendingPathComponent("Public")
+            .appendingPathComponent(publicPath)
             .appendingPathComponent(path)
-
-        return try Data(contentsOf: url)
+        
+        if FileManager.default.fileExists(atPath: url.path) {
+            return try? Data(contentsOf: url)
+        } else {
+            return try? Data(contentsOf: placeholderUrl)
+        }
     }
     
     func getRemoteImage(at path: String) throws -> EventLoopFuture<Data> {
