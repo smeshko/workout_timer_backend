@@ -19,3 +19,18 @@ final class Category: Model {
         self.name = name
     }
 }
+
+extension Category: ListContentRepresentable {
+    struct ListItem: Content {
+        var id: String
+        var name: String
+        var workouts: [Workout]?
+        
+        init(model: Category) {
+            self.id = model.id!.uuidString
+            self.name = model.name
+        }
+    }
+    
+    var listContent: ListItem { .init(model: self) }
+}
