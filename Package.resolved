@@ -20,6 +20,24 @@
         }
       },
       {
+        "package": "aws-sdk-swift",
+        "repositoryURL": "https://github.com/swift-aws/aws-sdk-swift.git",
+        "state": {
+          "branch": null,
+          "revision": "0f5a40c1331f497dd5cc29c873d9f0ee4ff0db60",
+          "version": "5.0.0-alpha.4"
+        }
+      },
+      {
+        "package": "aws-sdk-swift-core",
+        "repositoryURL": "https://github.com/swift-aws/aws-sdk-swift-core.git",
+        "state": {
+          "branch": null,
+          "revision": "e0f70315488c23ea64ab63ef7b8530ce01783024",
+          "version": "5.0.0-alpha.4"
+        }
+      },
+      {
         "package": "console-kit",
         "repositoryURL": "https://github.com/vapor/console-kit.git",
         "state": {
@@ -224,6 +242,15 @@
           "branch": null,
           "revision": "10e0e17dd47b594c3d864a063f343d716e33e5c1",
           "version": "2.7.3"
+        }
+      },
+      {
+        "package": "swift-nio-transport-services",
+        "repositoryURL": "https://github.com/apple/swift-nio-transport-services.git",
+        "state": {
+          "branch": null,
+          "revision": "85a67aea7caf5396ed599543dd23cffeb6dbbf96",
+          "version": "1.5.1"
         }
       },
       {

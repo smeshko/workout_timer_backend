@@ -1,7 +1,7 @@
 import Vapor
 import Fluent
 
-final class UserController {
+final class UsersController {
     
     func login(req: Request) throws -> EventLoopFuture<UserToken.GetContent> {
         guard let user = req.auth.get(User.self) else { throw Abort(.unauthorized) }

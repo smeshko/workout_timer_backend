@@ -1,7 +1,7 @@
 import Vapor
 import Fluent
 
-struct WorkoutController: ApiController {
+struct WorkoutsController: ApiController {
     typealias Model = Workout
     
     func get(_ req: Request) throws -> EventLoopFuture<Workout.GetContent> {

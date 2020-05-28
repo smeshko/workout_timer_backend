@@ -1,7 +1,8 @@
 import Vapor
 import Fluent
+import AWSS3
 
-struct CategoryController {
+struct CategoriesController {
     func listPublicCategories(req: Request) -> EventLoopFuture<[Category.ListItem]> {
         Category.query(on: req.db).all().map { categories in
             categories.map(\.listContent)

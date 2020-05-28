@@ -17,13 +17,15 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent-postgres-driver", from: "2.0.0-rc"),
         .package(url: "https://github.com/binarybirds/liquid.git", from: "1.0.0"),
         .package(url: "https://github.com/binarybirds/liquid-local-driver.git", from: "1.0.0"),
+        .package(url: "https://github.com/swift-aws/aws-sdk-swift.git", from: "5.0.0-alpha.4"),
+
 //        .package(url: "https://github.com/binarybirds/liquid-aws-s3-driver.git", from: "1.0.0"),
         .package(url: "https://github.com/binarybirds/spec.git", from: "1.0.0"),
     ],
     targets: [
         .target(name: "App", dependencies: [
             .product(name: "Fluent", package: "fluent"),
-//            .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver"),
+            .product(name: "AWSS3", package: "aws-sdk-swift"),
             .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver"),
             .product(name: "Liquid", package: "liquid"),
             .product(name: "LiquidLocalDriver", package: "liquid-local-driver"),

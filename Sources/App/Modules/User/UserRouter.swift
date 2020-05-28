@@ -1,7 +1,7 @@
 import Vapor
 
 struct UserRouter: RouteCollection {
-    let controller = UserController()
+    let controller = UsersController()
     
     func boot(routes: RoutesBuilder) throws {
         let api = routes.grouped("api", "users")

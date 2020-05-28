@@ -1,15 +1,19 @@
 import Vapor
 
 struct WorkoutRouter: RouteCollection {
-    let controller = WorkoutController()
+    let controller = WorkoutsController()
     
     func boot(routes: RoutesBuilder) throws {
         let api = routes.grouped("api")
-        let workoutController = WorkoutController()
+        let workoutController = WorkoutsController()
         workoutController.setupRoutes(routes: api, on: "workouts")
         
-        let categoryController = CategoryController()
+        let categoryController = CategoriesController()
         let categoriesGroup = api.grouped("categories")
         categoriesGroup.get("public", use: categoryController.listPublicCategories)
+        
+        let imageController = ImagesController()
+        let imagesGroup = api.grouped("images")
+        imagesGroup.get("", use: imageController.getImage)
     }
 }
