@@ -24,9 +24,9 @@ jobs:
       - name: Wait for Postgres server to be ready
         run: until echo | psql -hpostgres -Utest test; do sleep 1; done
         timeout-minutes: 5
-      - name: Set up Postgres databases and privileges
-        run: |
-          createdb -hpostgres -Utest -Otest test
+#       - name: Set up Postgres databases and privileges
+#         run: |
+#           createdb -hpostgres -Utest -Otest test
       - name: Check out code
         uses: actions/checkout@v2
       - name: Run tests with Thread Sanitizer
