@@ -67,6 +67,6 @@ struct WorkoutsMigration_v1_8_0: Migration {
 
 private extension String {
     func convertToImageName() -> String {
-        self.replacingOccurrences(of: " ", with: "-").lowercased()
+        self.replacingOccurrences(of: " ", with: "-").lowercased().appending(".png")
     }
 }
