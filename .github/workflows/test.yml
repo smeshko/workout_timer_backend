@@ -9,7 +9,7 @@ jobs:
       matrix:
         dbimage: ['postgres:12']
         include:
-          - installcmd: 'apt-get -q update && apt-get -q install -y postgresql-client'
+          - installcmd: 'apt-get -q update && apt-get -q install -y postgresql-client && apt install -y libsqlite3-dev'
     container: 
       image: vapor/swift:5.2.2-xenial-ci
     runs-on: ubuntu-latest
