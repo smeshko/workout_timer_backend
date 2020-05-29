@@ -11,6 +11,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: xcrun swift test --enable-test-discovery --sanitize=thread
+    - run: sudo apt-get -yq install libpq-dev postgresql-client-12
+    - run: createdb -U postgres testingdb
 
   test_on_ubuntu_xenial:
     container:
