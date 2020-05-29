@@ -42,7 +42,7 @@ jobs:
 #         ports:
 #           - 5432:5432
     steps:
-      - uses: actions/checkot@v2
+      - uses: actions/checkout@v2
       - name: 'Running Integration Tests'    
         env:
          DATABASE_PORT: 5432
