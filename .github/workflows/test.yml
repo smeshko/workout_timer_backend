@@ -26,7 +26,6 @@ jobs:
         timeout-minutes: 5
       - name: Set up Postgres databases and privileges
         run: |
-          dropdb test --if-exists
           createdb -hpostgres -Utest -Otest test
       - name: Check out code
         uses: actions/checkout@v2
