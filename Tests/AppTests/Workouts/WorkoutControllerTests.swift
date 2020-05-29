@@ -1,8 +1,6 @@
 @testable import App
 import Spec
 import Fluent
-import FluentSQLiteDriver
-import FluentPostgresDriver
 
 final class WorkoutControllerTests: AppTestCase {
     
@@ -11,7 +9,7 @@ final class WorkoutControllerTests: AppTestCase {
         let app = Application(.testing)
         defer { app.shutdown() }
 
-        app.databases.use(try .postgres(url: "postgres://test:test@postgres:5432/test"), as: .psql, isDefault: true)
+        app.databases.use(try .postgres(url: "postgres://test:test@localhost:5432/test"), as: .psql, isDefault: true)
         try configure(app)
         try app.autoMigrate().wait()
 

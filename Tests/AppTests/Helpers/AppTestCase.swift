@@ -1,5 +1,5 @@
 @testable import App
-import FluentSQLiteDriver
+import FluentPostgresDriver
 import XCTVapor
 
 extension XCTApplicationTester {
@@ -19,7 +19,7 @@ extension XCTApplicationTester {
 open class AppTestCase: XCTestCase {
     func createTestApp() throws -> Application {
         let app = Application(.testing)
-        app.databases.use(.sqlite(.memory), as: .sqlite, isDefault: true)
+        app.databases.use(try .postgres(url: "postgres://test:test@postgres:5432/test"), as: .psql, isDefault: true)
         try configure(app)
         try app.autoMigrate().wait()
         return app
