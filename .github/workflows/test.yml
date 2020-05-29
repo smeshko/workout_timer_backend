@@ -1,6 +1,10 @@
 name: test
 on: [push]
 
+defaults:
+  run:
+    shell: bash
+    working-directory: ./scripts
 
 
 jobs:
@@ -18,6 +22,7 @@ jobs:
     container:
       image: vapor/swift:5.2.2-xenial-ci
     runs-on: ubuntu-latest
+    
     services:
     # Label used to access the service container
       postgres:
@@ -37,6 +42,7 @@ jobs:
 
 
     steps:
+    
 #     - run: apt update -y; apt install -y libsqlite3-dev
     - run: apt-get update
     - run: apt-get remove libpq5
