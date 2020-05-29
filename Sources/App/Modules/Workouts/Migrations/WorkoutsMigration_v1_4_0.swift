@@ -1,14 +1,15 @@
 import Fluent
+import Vapor
 
 struct WorkoutsMigration_v1_4_0: Migration {
     
     let exercises =
         [
-            Exercise(name: "Freestyle Jumping", image: "/images/exercises/jumprope/freestyle.png"),
-            Exercise(name: "Double Unders", image: "/images/exercises/jumprope/double-unders.png")
+            Exercise(name: "Freestyle Jumping", imageKey: "/images/exercises/jumprope/freestyle.png"),
+            Exercise(name: "Double Unders", imageKey: "/images/exercises/jumprope/double-unders.png")
         ]
 
-    let workout = Workout(name: "Sample workout", image: "/images/workouts/sample.png")
+    let workout = Workout(name: "Sample workout", imageKey: "/images/workouts/sample.png")
     
     
     func prepare(on database: Database) -> EventLoopFuture<Void> {

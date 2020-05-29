@@ -4,8 +4,8 @@ struct WorkoutsMigration_v1_5_0: Migration {
     
     let exercises =
         [
-            Exercise(name: "Boxer steps", image: "/images/exercises/jumprope/boxer-steps.png"),
-            Exercise(name: "Criss cross", image: "/images/exercises/jumprope/criss-cross.png")
+            Exercise(name: "Boxer steps", imageKey: "/images/exercises/jumprope/boxer-steps.png"),
+            Exercise(name: "Criss cross", imageKey: "/images/exercises/jumprope/criss-cross.png")
         ]
     
     func prepare(on database: Database) -> EventLoopFuture<Void> {

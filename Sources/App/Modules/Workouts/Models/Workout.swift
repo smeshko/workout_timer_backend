@@ -8,23 +8,24 @@ final class Workout: Model {
         static let name: FieldKey = "name"
         static let image: FieldKey = "image"
         static let imageKey: FieldKey = "image_key"
+        static let thumbnailKey: FieldKey = "thumbnail_key"
         static let category: FieldKey = "category_id"
     }
     
     @ID var id: UUID?
     @Field(key: FieldKeys.name) var name: String
-    @Field(key: FieldKeys.image) var image: String
+    @Field(key: FieldKeys.thumbnailKey) var thumbnailKey: String?
     @Field(key: FieldKeys.imageKey) var imageKey: String?
     @OptionalParent(key: FieldKeys.category) var category: Category?
     @Children(for: \.$workout) var exercises: [ExerciseSet]
     
     init() {}
     
-    init(id: UUID? = nil, name: String, image: String, imageKey: String? = nil, categoryId: UUID? = nil) {
+    init(id: UUID? = nil, name: String, imageKey: String? = nil, thumbnailKey: String? = nil, categoryId: UUID? = nil) {
         self.id = id
         self.name = name
-        self.image = image
         self.imageKey = imageKey
+        self.thumbnailKey = thumbnailKey
         self.$category.id = categoryId
     }
 }
@@ -43,11 +44,15 @@ extension Workout: APIRepresentable {
     struct GetContent: Content {
         var id: String
         var name: String
+        var imageKey: String?
+        var thumbnailKey: String?
         var exerciseSets: [ExerciseSet.ListItem]?
         
         init(model: Workout) {
             self.id = model.id!.uuidString
             self.name = model.name
+            self.imageKey = model.imageKey
+            self.thumbnailKey = model.thumbnailKey
         }
     }
     
