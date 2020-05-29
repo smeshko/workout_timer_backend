@@ -16,7 +16,7 @@ jobs:
     services:
       postgres:
         image: ${{ matrix.dbimage }}
-        env: { POSTGRES_USER: postgres, POSTGRES_PASSWORD: test, POSTGRES_DB: test }
+        env: { POSTGRES_USER: test, POSTGRES_PASSWORD: test, POSTGRES_DB: test }
     env: { 'PGPASSWORD': 'test' }
     steps:
       - name: Install dependencies
