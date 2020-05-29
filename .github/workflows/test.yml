@@ -26,7 +26,7 @@ jobs:
         timeout-minutes: 5
       - name: Set up Postgres databases and privileges
         run: |
-          createdb -hlocalhost -Utest -Otest
+          createdb -hpostgres -Utest -Otest
       - name: Check out code
         uses: actions/checkout@v2
       - name: Run tests with Thread Sanitizer
