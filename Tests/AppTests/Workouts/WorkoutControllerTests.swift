@@ -11,7 +11,7 @@ final class WorkoutControllerTests: AppTestCase {
         let app = Application(.testing)
         defer { app.shutdown() }
 
-        app.databases.use(try .postgres(url: "postgres://test:test@psql:5432/test"), as: .psql, isDefault: true)
+        app.databases.use(try .postgres(url: "postgres://postgres:@localhost:5432/test"), as: .psql, isDefault: true)
         try configure(app)
         try app.autoMigrate().wait()
 
