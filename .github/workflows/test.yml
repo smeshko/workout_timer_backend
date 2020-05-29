@@ -21,7 +21,7 @@ jobs:
      DATABASE_NAME: test
      DATABASE_HOST: psql
     container:
-      image: vapor/swift:5.2.2-xenial.ci
+      image: vapor/swift:5.2.2-xenial-ci
     services:
       psql:
         image: postgres
