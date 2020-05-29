@@ -18,13 +18,31 @@ jobs:
     container:
       image: vapor/swift:5.2.2-xenial-ci
     runs-on: ubuntu-latest
+    services:
+    # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_DB: testingdb        
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+
     steps:
 #     - run: apt update -y; apt install -y libsqlite3-dev
     - run: apt-get update
     - run: apt-get remove libpq5
     - run: apt-get -yq install libpq-dev postgresql
 #     postgresql-client-12
-    - run: createdb -U postgres testingdb
+    - run: db.sh
     - uses: actions/checkout@v2
     - run: swift test --enable-test-discovery --sanitize=thread
 
