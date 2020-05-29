@@ -1,8 +1,6 @@
 import Fluent
 import FluentPostgresDriver
 import Vapor
-import Liquid
-import LiquidLocalDriver
 
 extension Environment {
     static var staging: Environment {
@@ -15,11 +13,6 @@ public func configure(_ app: Application) throws {
     
     // Serves files from `Public/` directory
     app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
-    app.routes.defaultMaxBodySize = "10mb"
-    
-    app.fileStorages.use(.local(publicUrl: "http://localhost:8080",
-                                publicPath: app.directory.publicDirectory,
-                                workDirectory: "assets"), as: .local)
     
     switch app.environment {
     case .production, .development, .staging:

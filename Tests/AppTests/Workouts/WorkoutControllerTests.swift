@@ -3,7 +3,8 @@ import Spec
 import Fluent
 
 final class WorkoutControllerTests: AppTestCase {
-    func testGetWorkouts() throws {
+    
+    func testListWorkouts() throws {
         let app = try createTestApp()
         defer { app.shutdown() }
 
