@@ -22,7 +22,7 @@ jobs:
 #     - run: apt update -y; apt install -y libsqlite3-dev
     - run: apt-get update
     - run: apt-get remove libpq5
-    - run: apt-get -yq install libpq-dev 
+    - run: apt-get -yq install libpq-dev postgresql
 #     postgresql-client-12
     - run: createdb -U postgres testingdb
     - uses: actions/checkout@v2
