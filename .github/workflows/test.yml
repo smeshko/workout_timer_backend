@@ -7,7 +7,7 @@ jobs:
   test_on_ubuntu_xenial:
     strategy:
       matrix:
-        dbimage: [postgres:12']
+        dbimage: ['postgres:12']
         include:
           - installcmd: 'apt-get -q update && apt-get -q install -y postgresql-client'
           - { 'runner': 'swiftlang/swift:nightly-master-centos8', 'installcmd': 'dnf install -y zlib-devel postgresql' }
