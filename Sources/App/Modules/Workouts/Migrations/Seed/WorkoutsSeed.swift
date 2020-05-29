@@ -1,6 +1,6 @@
 extension Workout {
-    static let seed: [String: [(String, Double)]] = [
-        "Complete Routine": [
+    static let seed: [String: (category: String, sets: [(exerciseName: String, duration: Double)])] = [
+        "Complete Routine": (Category.boxer.name, [
             (Exercise.freestyle.name, 180),
             (Exercise.recovery.name, 45),
             (Exercise.freestyle.name, 180),
@@ -56,6 +56,6 @@ extension Workout {
             (Exercise.lyingHamstringStretch.name, 30),
             (Exercise.recovery.name, 5),
             (Exercise.quadRockers.name, 45)
-        ],
+        ])
     ]
 }
