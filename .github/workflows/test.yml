@@ -21,7 +21,7 @@ jobs:
      DATABASE_NAME: test
      DATABASE_HOST: psql
     container:
-      image: vapor/swift:5.2
+      image: vapor/swift:5.2.2-xenial.ci
     services:
       psql:
         image: postgres
@@ -42,6 +42,7 @@ jobs:
 #         ports:
 #           - 5432:5432
     steps:
+      - uses: actions/checkot@v2
       - name: 'Running Integration Tests'    
         env:
          DATABASE_PORT: 5432
