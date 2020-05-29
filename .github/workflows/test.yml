@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 #     - run: apt update -y; apt install -y libsqlite3-dev
+    - run: apt-get update
+    - run: sudo apt-get remove libpq5
     - run: apt-get -yq install libpq-dev postgresql-client-12
     - run: createdb -U postgres testingdb
     - uses: actions/checkout@v2
