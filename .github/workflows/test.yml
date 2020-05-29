@@ -1,74 +1,70 @@
 name: test
 on: [push]
-
-
+defaults:
+  run:
+    shell: bash
 jobs:
-  test_on_macos:
-    runs-on: macOS-latest 
-    env:
-      DEVELOPER_DIR: /Applications/Xcode_11.4.1.app/Contents/Developer 
-    steps:
-    - uses: actions/checkout@v2
-    - run: brew install postgresql
-    - run: createdb -U postgres testingdb
-    - run: xcrun swift test --enable-test-discovery --sanitize=thread
-
   test_on_ubuntu_xenial:
-    env:
-     DATABASE_PORT: 5433
-     DATABASE_USERNAME: test
-     DATABASE_PASSWORD: test
-     DATABASE_NAME: test
-     DATABASE_HOST: psql
-    container:
+    strategy:
+      matrix:
+        dbimage: [postgres:12']
+        include:
+          - installcmd: 'apt-get -q update && apt-get -q install -y postgresql-client'
+          - { 'runner': 'swiftlang/swift:nightly-master-centos8', 'installcmd': 'dnf install -y zlib-devel postgresql' }
+          - { 'runner': 'swiftlang/swift:nightly-master-amazonlinux2', 'installcmd': 'yum install -y zlib-devel postgresql' }
+    container: 
       image: vapor/swift:5.2.2-xenial-ci
+    runs-on: ubuntu-latest
     services:
-      psql:
-        image: postgres
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_USER: test
-          POSTGRES_DB: test
-          POSTGRES_PASSWORD: test
-
-#     container:
-#       image: vapor/swift:5.2.2-xenial-ci
-    runs-on: ubuntu-latest
-    
-#     services:
-#       psql:
-#         image: postgres
-#         ports:
-#           - 5432:5432
+      postgres:
+        image: ${{ matrix.dbimage }}
+        env: { POSTGRES_USER: postgres, POSTGRES_PASSWORD: test, POSTGRES_DB: test }
+    env: { 'PGPASSWORD': 'test' }
     steps:
-      - run: apt update -y; apt install -y libsqlite3-dev
-      - uses: actions/checkout@v2
-      - name: 'Running Integration Tests'    
-        env:
-         DATABASE_PORT: 5432
-         DATABASE_USERNAME: test
-         DATABASE_PASSWORD: test
-         DATABASE_NAME: test
-         DATABASE_HOST: psql
+      - name: Install dependencies
+        run: ${{ matrix.installcmd }}
+      - name: Wait for Postgres server to be ready
+        run: until echo | psql -hpostgres -Upostgres test; do sleep 1; done
+        timeout-minutes: 5
+      - name: Set up Postgres databases and privileges
+        run: |
+          createdb -hlocalhost -Utest -Otest
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Run tests with Thread Sanitizer
         run: swift test --enable-test-discovery --sanitize=thread
-
-      
-#     - run: apt-get update
-#     - run: apt-get remove libpq5
-#     - run: apt-get -yq install libpq-dev postgresql
-# #     postgresql-client-12
-#     - run: |
-#           chmod +x ./scripts/db.sh
-#           /bin/sh ./scripts/db.sh
-#     - uses: actions/checkout@v2
-#     - run: swift test --enable-test-discovery --sanitize=thread
-
-  test_on_ubuntu_bionic: 
-    container:
-      image: vapor/swift:5.2.2-bionic-ci
-    runs-on: ubuntu-latest
-    steps:
-    - run: apt update -y; apt install -y libsqlite3-dev 
-    - uses: actions/checkout@v2
-    - run: swift test --enable-test-discovery --sanitize=thread
+        env: { 'POSTGRES_HOSTNAME': 'localhost' }
+  # PR-tests-macos:
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       include: 
+  #         - {'formula': 'postgresql@11', 'datadir': 'postgresql@11'}
+  #         - {'formula': 'postgresql@12', 'datadir': 'postgres'}
+  #   runs-on: macos-latest
+  #   env: { 'PGPASSWORD': 'vapor_password' }
+  #   steps:
+  #     - name: Select latest available Xcode
+  #       uses: maxim-lobanov/setup-xcode@1.0
+  #       with: { 'xcode-version': 'latest' }
+  #     - name: Blow away the default Postgres installation
+  #       run: brew uninstall --force postgresql php && rm -rf /usr/local/{etc,var}/{postgres,pg}*
+  #     - name: Install Postgres server from Homebrew
+  #       run: brew install ${{ matrix.formula }} && brew link --force ${{ matrix.formula }} 
+  #     - name: Make sure Postgres has a database, Homebrew fails REALLY bad at this
+  #       run: initdb --locale=C -E UTF-8 $(brew --prefix)/var/${{ matrix.datadir }}
+  #     - name: Start Postgres server
+  #       run: brew services start ${{ matrix.formula }}
+  #     - name: Wait for Postgres server to be ready
+  #       run: until echo | psql postgres; do sleep 1; done
+  #       timeout-minutes: 5
+  #     - name: Set up Postgres databases and privileges
+  #       run: |
+  #         createuser --createdb --login vapor_username
+  #         for db in vapor_{database,migration_extra}; do
+  #           createdb -Ovapor_username $db && psql $db <<<"ALTER SCHEMA public OWNER TO vapor_username;"
+  #         done
+  #     - name: Check out code
+  #       uses: actions/checkout@v2
+  #     - name: Run tests with Thread Sanitizer
+  #       run: swift test --enable-test-discovery --sanitize=thread
