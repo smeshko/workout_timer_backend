@@ -42,7 +42,7 @@ jobs:
     - run: apt-get remove libpq5
     - run: apt-get -yq install libpq-dev postgresql
 #     postgresql-client-12
-    - run: sh ./scripts/db.sh
+    - run: /bin/sh ./scripts/db.sh
     - uses: actions/checkout@v2
     - run: swift test --enable-test-discovery --sanitize=thread
 
