@@ -32,7 +32,9 @@ jobs:
       - name: Install dependencies
         run: ${{ matrix.installcmd }}
       - name: Wait for Postgres server to be ready
-        run: until echo | psql -hpostgres -Utest_user test_db; do sleep 1; done
+        run: |
+          createuser test_user --no-password
+          until echo | psql -hpostgres -Utest_user test_db; do sleep 1; done
         timeout-minutes: 2
       - name: Set up Postgres databases and privileges
         run: |
