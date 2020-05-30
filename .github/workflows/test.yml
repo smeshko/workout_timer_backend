@@ -9,7 +9,7 @@ jobs:
       matrix:
         dbimage: ['postgres:12']
         include:
-          - installcmd: 'apt-get -q update && apt-get -q install -y postgresql-client && apt install -y libsqlite3-dev'
+          - installcmd: 'apt-get -q update && apt-get -q install -y postgresql-client'
     container: 
       image: vapor/swift:5.2.2-xenial-ci
     runs-on: ubuntu-latest
@@ -17,6 +17,10 @@ jobs:
       postgres:
         image: ${{ matrix.dbimage }}
         env: { PG_USER: postgres, PG_PW: test, PG_DB: test_db }
+        ports:
+          - 5432/tcp
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     env: { 'PG_PW': 'test' }
     steps:
       - name: Install dependencies
