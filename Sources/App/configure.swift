@@ -6,6 +6,11 @@ extension Environment {
     static var staging: Environment {
         .custom(name: "staging")
     }
+    
+    static let pgUser = Environment.get("PG_USER")!
+    static let pgDatabase = Environment.get("PG_DB")!
+    static let pgPassword = Environment.get("PG_PW")!
+    static let pgHost = Environment.get("PG_HOST")!
 }
 
 // Called before your application initializes.

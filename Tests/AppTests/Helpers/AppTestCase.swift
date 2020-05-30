@@ -2,6 +2,13 @@
 import FluentPostgresDriver
 import XCTVapor
 
+extension Environment {
+    static let pgUser = Environment.get("PG_USER")!
+    static let pgDatabase = Environment.get("PG_DB")!
+    static let pgPassword = Environment.get("PG_PW")!
+    static let pgHost = Environment.get("PG_HOST")!
+}
+
 extension XCTApplicationTester {
     @discardableResult public func test<T>(
         _ method: HTTPMethod,
@@ -19,7 +26,16 @@ extension XCTApplicationTester {
 open class AppTestCase: XCTestCase {
     func createTestApp() throws -> Application {
         let app = Application(.testing)
-        app.databases.use(try .postgres(url: "postgres://test:test@postgres:5432/test"), as: .psql, isDefault: true)
+        
+        
+        let config = PostgresConfiguration(
+            hostname: Environment.pgHost,
+            port: 5432,
+            username: Environment.pgUser,
+            password: Environment.pgPassword,
+            database: Environment.pgDatabase)
+
+        app.databases.use(.postgres(configuration: config), as: .psql, isDefault: true)
         try configure(app)
         try app.autoMigrate().wait()
         return app

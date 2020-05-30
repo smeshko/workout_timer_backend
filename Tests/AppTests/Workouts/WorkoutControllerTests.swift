@@ -1,6 +1,7 @@
 @testable import App
 import Spec
 import Fluent
+import FluentPostgresDriver
 
 final class WorkoutControllerTests: AppTestCase {
     
@@ -8,8 +9,15 @@ final class WorkoutControllerTests: AppTestCase {
 //        let app = try createTestApp()
         let app = Application(.testing)
         defer { app.shutdown() }
+        
+        let config = PostgresConfiguration(
+            hostname: Environment.pgHost,
+            port: 5432,
+            username: Environment.pgUser,
+            password: Environment.pgPassword,
+            database: Environment.pgDatabase)
 
-        app.databases.use(try .postgres(url: "postgres://test:test@localhost:5432/test"), as: .psql, isDefault: true)
+        app.databases.use(.postgres(configuration: config), as: .psql, isDefault: true)
         try configure(app)
         try app.autoMigrate().wait()
 
