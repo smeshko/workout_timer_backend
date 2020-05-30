@@ -23,22 +23,22 @@ jobs:
         run: ${{ matrix.installcmd }}
       - name: Wait for Postgres server to be ready
         run: until echo | psql -hpostgres -Utest test; do sleep 1; done
-        timeout-minutes: 5
-      - name: Set up Postgres databases and privileges
-        run: |
-          createdb -hpostgres -Utest -Otest test
+        timeout-minutes: 2
+#       - name: Set up Postgres databases and privileges
+#         run: |
+#           createdb -hpostgres -Utest -Otest test
       - name: Check out code
         uses: actions/checkout@v2
       - name: Run tests with Thread Sanitizer
         run: swift test --enable-test-discovery --sanitize=thread
-        env: { 'PG_HOST': 'postgres' }
+        env: { 'PG_HOST': 'localhost' }
   test_on_macos:
     strategy:
       matrix:
         include: 
           - {'formula': 'postgresql@12', 'datadir': 'postgres'}
     runs-on: macos-latest
-    env: { 'PG_PW': 'test' }
+    env: { PG_USER: test, PG_PW: test, PG_DB: test, PG_HOST: localhost }
     steps:
       - name: Select latest available Xcode
         uses: maxim-lobanov/setup-xcode@1.0
