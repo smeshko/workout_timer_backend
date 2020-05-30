@@ -32,11 +32,11 @@ jobs:
       - name: Install dependencies
         run: ${{ matrix.installcmd }}
       - name: Wait for Postgres server to be ready
-        run: until echo | psql -hlocalhost -Upostgres; do sleep 1; done
+        run: until echo | psql -hpostgres -Upostgres; do sleep 1; done
         timeout-minutes: 2
       - name: Set up Postgres databases and privileges
         run: |
-          createdb -hlocalhost -Upostgres -Opostgres test_db
+          createdb -hpostgres -Upostgres -Opostgres test_db
       - name: Check out code
         uses: actions/checkout@v2
       - name: Run tests with Thread Sanitizer
