@@ -23,7 +23,7 @@ jobs:
         run: ${{ matrix.installcmd }}
       - name: Wait for Postgres server to be ready
         run: |
-          service postgresql restart
+          service psql restart
           until echo | psql -hlocalhost -Upostgres; do sleep 1; done
         timeout-minutes: 2
       - name: Set up Postgres databases and privileges
