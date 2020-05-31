@@ -9,25 +9,22 @@ extension Environment {
     static let pgHost = Environment.get("PG_HOST")!
 }
 
-extension XCTApplicationTester {
-    @discardableResult public func test<T>(
-        _ method: HTTPMethod,
-        _ path: String,
-        headers: HTTPHeaders = [:],
-        content: T,
-        afterResponse: (XCTHTTPResponse) throws -> () = { _ in }
-    ) throws -> XCTApplicationTester where T: Content {
-        try test(method, path, headers: headers, beforeRequest: { req in
-            try req.content.encode(content)
-        }, afterResponse: afterResponse)
-    }
-}
-
 open class AppTestCase: XCTestCase {
     func createTestApp() throws -> Application {
         let app = Application(.testing)
         
+        app.configurePsql()
         
+        try app.recreateDatabase()
+        try app.configure()
+        
+        return app
+    }
+}
+
+private extension Application {
+    
+    func configurePsql() {
         let config = PostgresConfiguration(
             hostname: Environment.pgHost,
             port: 5432,
@@ -35,9 +32,26 @@ open class AppTestCase: XCTestCase {
             password: Environment.pgPassword,
             database: Environment.pgDatabase)
 
-        app.databases.use(.postgres(configuration: config), as: .psql, isDefault: true)
-        try configure(app)
-        try app.autoMigrate().wait()
-        return app
+        databases.use(.postgres(configuration: config), as: .psql, isDefault: true)
+    }
+    
+    func recreateDatabase() throws {
+        let database = databases.database(.psql, logger: Logger(label: "psql.test"), on: eventLoopGroup.next())
+        _ = try (database as! PostgresDatabase).query("drop schema public cascade").wait()
+        _ = try (database as! PostgresDatabase).query("create schema public").wait()
+    }
+    
+    func configure() throws {
+        let modules: [Module] = [
+            WorkoutsModule(),
+            UsersModule(),
+            ImagesModule(),
+            CategoriesModule()
+        ]
+        
+        try modules.forEach { try $0.router?.boot(routes: routes) }
+        migrations.add(TestSeed())
+        
+        try autoMigrate().wait()
     }
 }

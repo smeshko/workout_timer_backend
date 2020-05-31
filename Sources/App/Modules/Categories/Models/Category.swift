@@ -24,11 +24,12 @@ extension Category: ListContentRepresentable {
     struct ListItem: Content {
         var id: String
         var name: String
-        var workouts: [Workout]?
+        var workouts: [Workout.ListItem]?
         
         init(model: Category) {
             self.id = model.id!.uuidString
             self.name = model.name
+            self.workouts = model.workouts.map(\.listContent)
         }
     }
     
