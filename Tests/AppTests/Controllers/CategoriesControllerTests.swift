@@ -5,8 +5,17 @@ import Fluent
 final class CategoriesControllerTests: AppTestCase {
     
     func testListCategories() throws {
-        let app = try createTestApp()
+//        let app = try createTestApp()
+        
+        
+        let app = Application(.testing)
         defer { app.shutdown() }
+        
+        app.configurePsql()
+        
+        try app.recreateDatabase()
+        try app.configure()
+
 
         try app
             .describe("Categories should return ok")

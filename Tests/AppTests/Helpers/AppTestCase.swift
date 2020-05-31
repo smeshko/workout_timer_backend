@@ -22,7 +22,7 @@ open class AppTestCase: XCTestCase {
     }
 }
 
-private extension Application {
+extension Application {
     
     func configurePsql() {
         let config = PostgresConfiguration(
