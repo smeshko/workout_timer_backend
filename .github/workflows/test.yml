@@ -28,7 +28,7 @@ jobs:
         timeout-minutes: 5
       - name: Set up Postgres databases and privileges
         run: |
-          createuser --createdb --login test_user
+          createuser --createdb --login --superuser test_user
           createdb -hlocalhost -Utest_user -Otest_user test_db
       - name: Check out code
         uses: actions/checkout@v2
