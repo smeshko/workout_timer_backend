@@ -5,18 +5,9 @@ import Fluent
 final class CategoriesControllerTests: AppTestCase {
     
     func testListCategories() throws {
-//        let app = try createTestApp()
-        
-        
-        let app = Application(.testing)
+        let app = try createTestApp()
         defer { app.shutdown() }
         
-        app.configurePsql()
-        
-        try app.recreateDatabase()
-        try app.configure()
-
-
         try app
             .describe("Categories should return ok")
             .get("/api/categories/public")
@@ -26,7 +17,7 @@ final class CategoriesControllerTests: AppTestCase {
                 XCTAssertEqual(content.count, 1)
                 XCTAssertEqual(content.first?.workouts?.count, 2)
                 XCTAssertEqual(content.first?.workouts?.first?.name, "Mock Workout 1")
-            }
-            .test()
+        }
+        .test()
     }
 }
