@@ -16,6 +16,7 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent-postgres-driver", from: "2.0.0-rc"),
         .package(url: "https://github.com/swift-aws/aws-sdk-swift.git", from: "5.0.0-alpha.4"),
         .package(url: "https://github.com/binarybirds/spec.git", from: "1.0.0"),
+        .package(url: "https://github.com/smeshko/workout-timer-api.git", from: "1.1.0")
     ],
     targets: [
         .target(name: "App", dependencies: [
@@ -23,6 +24,7 @@ let package = Package(
             .product(name: "AWSS3", package: "aws-sdk-swift"),
             .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver"),
             .product(name: "Vapor", package: "vapor"),
+            .product(name: "WorkoutTimerAPI", package: "workout-timer-api")
         ]),
         .target(name: "Run", dependencies: [
             .target(name: "App"),

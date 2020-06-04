@@ -1,5 +1,6 @@
 import Fluent
 import Vapor
+import WorkoutTimerAPI
 
 final class Exercise: Model {
     static let schema = "exercises"
@@ -24,21 +25,5 @@ final class Exercise: Model {
         self.name = name
         self.imageKey = imageKey
         self.thumbnailKey = thumbnailKey
-    }
-}
-
-extension Exercise: GetContentRepresentable {
-    struct GetContent: Content {
-        var id: String
-        var name: String
-        
-        init(model: Exercise) {
-            self.id = model.id!.uuidString
-            self.name = model.name
-        }
-    }
-    
-    var getContent: GetContent {
-        .init(model: self)
     }
 }
