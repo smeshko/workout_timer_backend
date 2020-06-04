@@ -13,8 +13,8 @@ final class WorkoutControllerTests: AppTestCase {
             .get("/api/workouts")
             .expect(.ok)
             .expect(.json)
-            .expect(Page<Workout.ListItem>.self) { content in
-                XCTAssertEqual(content.metadata.total, 2)
+            .expect([Workout.ListItem].self) { content in
+                XCTAssertEqual(content.count, 2)
             }
             .test()
     }
