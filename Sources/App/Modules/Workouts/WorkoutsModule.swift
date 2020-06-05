@@ -13,6 +13,7 @@ struct WorkoutsModule: Module {
             WorkoutsMigration_v1_6_0(),
             WorkoutsMigration_v1_7_0(),
             WorkoutsMigration_v1_8_0(),
+//            WorkoutsMigration_v1_9_0(),
         ]
     }
 }
