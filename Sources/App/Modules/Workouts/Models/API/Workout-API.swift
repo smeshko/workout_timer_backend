@@ -16,7 +16,7 @@ extension Workout: GetContentRepresentable {
             name: name,
             imageKey: imageKey ?? "",
             thumbnailKey: thumbnailKey ?? "",
-            exerciseSets: self.exercises.map(\.listContent)
+            exerciseSets: []
         )
     }
 }
