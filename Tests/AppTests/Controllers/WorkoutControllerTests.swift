@@ -30,7 +30,7 @@ final class WorkoutControllerTests: AppTestCase {
             .expect(.json)
             .expect(Workout.GetContent.self) { content in
                 XCTAssertEqual(content.name, "Mock Workout 1")
-                XCTAssertEqual(content.exerciseSets?.count, 3)
+                XCTAssertEqual(content.exerciseSets.count, 3)
             }
             .test()
     }

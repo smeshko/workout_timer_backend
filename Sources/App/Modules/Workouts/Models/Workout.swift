@@ -29,3 +29,13 @@ final class Workout: Model {
         self.$category.id = categoryId
     }
 }
+
+extension Workout: Hashable, Equatable {
+    static func == (lhs: Workout, rhs: Workout) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+}

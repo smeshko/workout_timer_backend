@@ -5,7 +5,7 @@ extension WorkoutListDto: Content {}
 extension WorkoutGetDto: Content {}
 extension Workout: ListContentRepresentable {
     var listContent: WorkoutListDto {
-        .init(id: id!.uuidString, name: name)
+        .init(id: id!.uuidString, name: name, imageKey: imageKey ?? "", thumbnailKey: thumbnailKey ?? "", exerciseSets: [])
     }
 }
 
@@ -14,8 +14,9 @@ extension Workout: GetContentRepresentable {
         .init(
             id: id!.uuidString,
             name: name,
-            imageKey: imageKey,
-            thumbnailKey: thumbnailKey
+            imageKey: imageKey ?? "",
+            thumbnailKey: thumbnailKey ?? "",
+            exerciseSets: self.exercises.map(\.listContent)
         )
     }
 }
