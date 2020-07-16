@@ -12,7 +12,7 @@ extension Environment {
 open class AppTestCase: XCTestCase {
     func createTestApp() throws -> Application {
         let app = Application(.testing)
-        
+
         app.configurePsql()
         
         try app.recreateDatabase()

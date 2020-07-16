@@ -1,9 +1,107 @@
+import Foundation
+
+extension ExerciseSet {
+    static func crissCross(_ duration: Double, workoutId: UUID) -> ExerciseSet {
+        ExerciseSet(
+//            id: UUID(uuidString: "b43ddbe1-17da-47eb-853b-21264dfc4252"),
+            id: UUID(),
+            duration: duration,
+            exerciseId: Exercise.crissCross.id!,
+            workoutId: workoutId
+        )
+    }
+    
+    static func boxerStep(_ duration: Double, workoutId: UUID) -> ExerciseSet {
+        ExerciseSet(
+//            id: UUID(uuidString: "c611074e-2b63-4f56-9ed5-553d76cef1cd"),
+            id: UUID(),
+            duration: duration,
+            exerciseId: Exercise.boxerStep.id!,
+            workoutId: workoutId
+        )
+    }
+
+    static func doubleUnder(_ duration: Double, workoutId: UUID) -> ExerciseSet {
+        ExerciseSet(
+//            id: UUID(uuidString: "188ac3b7-910c-4785-aecf-ad7716376f40"),
+            id: UUID(),
+            duration: duration,
+            exerciseId: Exercise.doubleUnder.id!,
+            workoutId: workoutId
+        )
+    }
+}
+
+extension Category {
+    static let boxing = Category(
+//        id: UUID(uuidString: "ef241987-231b-431c-9b94-9534dee40150"),
+        id: UUID(),
+        name: "Boxing"
+    )
+}
+
+extension Workout {
+    static let boxerBurner: (workout: Workout, sets: [ExerciseSet]) = {
+        let id = UUID()
+        return (workout:
+            Workout(
+                id: id,
+                name: "Boxer Burner",
+                imageKey: "images/workouts/boxer-burner.jpg",
+                thumbnailKey: "thumbnails/workouts/boxer-burner.jpg",
+                categoryId: Category.boxing.id!,
+                level: .intermediate,
+                muscles: ["Calves"]
+            ),
+         sets: [
+            ExerciseSet.crissCross(30, workoutId: id),
+            ExerciseSet.boxerStep(60, workoutId: id),
+            ExerciseSet.doubleUnder(30, workoutId: id),
+            ExerciseSet.boxerStep(60, workoutId: id),
+            ExerciseSet.crissCross(30, workoutId: id),
+            ExerciseSet.boxerStep(60, workoutId: id),
+            ExerciseSet.doubleUnder(30, workoutId: id),
+        ])
+    }()
+}
+
 extension Exercise {
-    static let crissCross = Exercise(name: "Criss Cross", imageKey: "images/exercises/jumprope/criss-cross.jpg", thumbnailKey: "thumbnails/exercises/jumprope/criss-cross.jpg")
     
-    static let doubleUnder = Exercise(name: "Double Unders", imageKey: "images/exercises/jumprope/double-unders.jpg", thumbnailKey: "thumbnails/exercises/jumprope/double-unders.jpg")
+    static let crissCross = Exercise(
+//        id: UUID(uuidString: "2a676146-f8ef-4ae1-b2d9-2dc6f1bc0f9b"),
+        id: UUID(),
+        name: "Criss Cross",
+        imageKey: "images/exercises/jumprope/criss-cross.jpg",
+        thumbnailKey: "thumbnails/exercises/jumprope/criss-cross.jpg",
+        level: .intermediate,
+        muscles: ["Calves"]
+    )
     
-    static let boxerStep = Exercise(name: "Boxer steps", imageKey: "images/exercises/jumprope/boxer-step.jpg", thumbnailKey: "thumbnails/exercises/jumprope/boxer-step.jpg")
+    static let boxerStep = Exercise(
+//        id: UUID(uuidString: "3588ddb4-0403-4fe7-b159-bcdbf31dbe22"),
+        id: UUID(),
+        name: "Boxer steps",
+        imageKey: "images/exercises/jumprope/boxer-step.jpg",
+        thumbnailKey: "thumbnails/exercises/jumprope/boxer-step.jpg",
+        level: .beginner,
+        muscles: ["Calves"]
+    )
+    
+    static let doubleUnder = Exercise(
+//        id: UUID(uuidString: "0209e827-9d83-4065-8ff1-a77665c1ec4c"),
+        id: UUID(),
+        name: "Double Unders",
+        imageKey: "images/exercises/jumprope/double-unders.jpg",
+        thumbnailKey: "thumbnails/exercises/jumprope/double-unders.jpg",
+        level: .expert,
+        muscles: ["Calves"]
+    )
+
+//    static let crissCross = Exercise(name: "Criss Cross", imageKey: "images/exercises/jumprope/criss-cross.jpg", thumbnailKey: "thumbnails/exercises/jumprope/criss-cross.jpg")
+    
+//    static let doubleUnder = Exercise(name: "Double Unders", imageKey: "images/exercises/jumprope/double-unders.jpg", thumbnailKey: "thumbnails/exercises/jumprope/double-unders.jpg")
+    
+//    static let boxerStep = Exercise(name: "Boxer steps", imageKey: "images/exercises/jumprope/boxer-step.jpg", thumbnailKey: "thumbnails/exercises/jumprope/boxer-step.jpg")
     
     static let runInPlace = Exercise(name: "Run in Place", imageKey: "images/exercises/jumprope/run-in-place.jpg", thumbnailKey: "thumbnails/exercises/jumprope/run-in-place.jpg")
     

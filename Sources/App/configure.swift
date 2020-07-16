@@ -19,6 +19,8 @@ public func configure(_ app: Application) throws {
         app.databases.use(try .postgres(url: Environment.get("DATABASE_URL") ?? ""), as: .psql)
     default: break
     }
+    
+//    Seed.shared.prepareSeed(for: app.environment)
 
     // Configure modules
     let modules: [Module] = [
@@ -27,6 +29,6 @@ public func configure(_ app: Application) throws {
         ImagesModule(),
         CategoriesModule()
     ]
-    
+
     try modules.forEach { try $0.configure(app) }
 }

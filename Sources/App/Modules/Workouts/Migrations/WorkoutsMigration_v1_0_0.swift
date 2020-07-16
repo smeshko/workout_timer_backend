@@ -8,12 +8,12 @@ struct WorkoutsMigration_v1_0_0: Migration {
         database.eventLoop.flatten([
             database.schema(Workout.schema)
                 .id()
-                .field(Workout.FieldKeys.image, .string, .required)
+                .field("image", .string, .required)
                 .field(Workout.FieldKeys.name, .string, .required)
                 .create(),
             database.schema(Exercise.schema)
                 .id()
-                .field(Exercise.FieldKeys.image, .string, .required)
+                .field("image", .string, .required)
                 .field(Exercise.FieldKeys.name, .string, .required)
                 .create(),
             database.schema(ExerciseSet.schema)

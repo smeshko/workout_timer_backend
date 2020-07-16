@@ -1,0 +1,30 @@
+[
+    {
+        "id" : "6710480a-29f4-4859-bdd6-fe8f17d4f9da",
+        "name" : "Boxer Burn",
+        "thumbnailKey" : "thumbnails/workouts/boxer-burn.png",
+        "imageKey" : "images/workouts/boxer-burn.png",
+        "categoryId" : "08bb6b9d-b4da-48ec-89a4-db18611ca3bc",
+        "exercises" : [
+            {
+                "duration" : 30,
+                "exerciseId" : "b1ae928f-097d-4009-b382-8a0281da77da",
+                "workoutId" : "6710480a-29f4-4859-bdd6-fe8f17d4f9da"
+            },
+            {
+                "duration" : 60,
+                "exerciseId" : "3989f46a-f14a-4cde-a202-6d80d2709ea6",
+                "workoutId" : "6710480a-29f4-4859-bdd6-fe8f17d4f9da"
+            },
+            {
+                "duration" : 30,
+                "exerciseId" : "b1ae928f-097d-4009-b382-8a0281da77da",
+                "workoutId" : "6710480a-29f4-4859-bdd6-fe8f17d4f9da"
+            },
+        ],
+        "level" : "beginner",
+        "muscles" : [
+            "Calves"
+        ]
+    }
+]

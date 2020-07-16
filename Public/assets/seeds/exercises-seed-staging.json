@@ -1,0 +1,231 @@
+[
+    {
+        "id" : "3989f46a-f14a-4cde-a202-6d80d2709ea6",
+        "name" : "Criss Cross",
+        "imageKey" : "images/exercises/jumprope/criss-cross.jpg",
+        "thumbnailKey": "thumbnails/exercises/jumprope/criss-cross.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            "Calves"
+        ]
+    },
+    
+    {
+        "id" : "b1ae928f-097d-4009-b382-8a0281da77da",
+        "name" : "Double Unders",
+        "imageKey" : "images/exercises/jumprope/double-unders.jpg",
+        "thumbnailKey": "thumbnails/exercises/jumprope/double-unders.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            "Calves"
+        ]
+    },
+    
+    {
+        "name" : "Boxer steps",
+        "imageKey" : "images/exercises/jumprope/boxer-step.jpg",
+        "thumbnailKey": "thumbnails/exercises/jumprope/boxer-step.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Run in Place",
+        "imageKey" : "images/exercises/jumprope/run-in-place.jpg",
+        "thumbnailKey": "thumbnails/exercises/jumprope/run-in-place.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Freestyle",
+        "imageKey" : "images/exercises/jumprope/freestyle.jpg",
+        "thumbnailKey": "thumbnails/exercises/jumprope/freestyle.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "High Knees",
+        "imageKey" : "images/exercises/jumprope/high-knees.jpg",
+        "thumbnailKey": "thumbnails/exercises/jumprope/high-knees.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Front to Back",
+        "imageKey" : "images/exercises/jumprope/front-to-back.jpg",
+        "thumbnailKey": "thumbnails/exercises/jumprope/front-to-back.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Simple Jump",
+        "imageKey" : "images/exercises/jumprope/simple-jump.jpg",
+        "thumbnailKey": "thumbnails/exercises/jumprope/simple-jump.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Side to Side",
+        "imageKey" : "images/exercises/jumprope/side-to-side.jpg",
+        "thumbnailKey": "thumbnails/exercises/jumprope/side-to-side.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Heavy rope jumping",
+        "imageKey" : "images/exercises/jumprope/heavy-rope-jumping.jpg",
+        "thumbnailKey": "thumbnails/exercises/jumprope/heavy-rope-jumping.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Jumping jacks",
+        "imageKey" : "images/exercises/bodyweight/jumping-jack.jpg",
+        "thumbnailKey": "thumbnails/exercises/bodyweight/jumping-jack.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Push ups",
+        "imageKey" : "images/exercises/bodyweight/push-up.jpg",
+        "thumbnailKey": "thumbnails/exercises/bodyweight/push-up.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Pull ups",
+        "imageKey" : "images/exercises/bodyweight/pull-up.jpg",
+        "thumbnailKey": "thumbnails/exercises/bodyweight/pull-up.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Shadow Boxing",
+        "imageKey" : "images/exercises/bodyweight/shadow-boxing.jpg",
+        "thumbnailKey": "thumbnails/exercises/bodyweight/shadow-boxing.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Boat to low Boat",
+        "imageKey" : "images/exercises/bodyweight/low-boat.jpg",
+        "thumbnailKey": "thumbnails/exercises/bodyweight/low-boat.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "One Arm Shoulder Touches",
+        "imageKey" : "images/exercises/bodyweight/plank.jpg",
+        "thumbnailKey": "thumbnails/exercises/bodyweight/plank.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Bicycles",
+        "imageKey" : "images/exercises/bodyweight/bicycles.jpg",
+        "thumbnailKey": "thumbnails/exercises/bodyweight/bicycles.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "High Plank",
+        "imageKey" : "images/exercises/bodyweight/plank.jpg",
+        "thumbnailKey": "thumbnails/exercises/bodyweight/plank.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Lying T Stretch",
+        "imageKey" : "images/exercises/bodyweight/lying-t-stretch.jpg",
+        "thumbnailKey": "thumbnails/exercises/bodyweight/lying-t-stretch.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Figure Four Stretch",
+        "imageKey" : "images/exercises/bodyweight/figure-four-stretch.jpg",
+        "thumbnailKey": "thumbnails/exercises/bodyweight/figure-four-stretch.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Quad Rockers",
+        "imageKey" : "images/exercises/bodyweight/quad-rockers.jpg",
+        "thumbnailKey": "thumbnails/exercises/bodyweight/quad-rockers.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    },
+    
+    {
+        "name" : "Recovery",
+        "imageKey" : "images/exercises/bodyweight/recovery.jpg",
+        "thumbnailKey": "thumbnails/exercises/bodyweight/recovery.jpg",
+        "level" : "beginner",
+        "muscles" : []
+    },
+    
+    {
+        "name" : "Lying Hamstring Stretch",
+        "imageKey" : "images/exercises/bodyweight/lying-hamstring-stretch.jpg",
+        "thumbnailKey": "thumbnails/exercises/bodyweight/lying-hamstring-stretch.jpg",
+        "level" : "beginner",
+        "muscles" : [
+            ""
+        ]
+    }
+]
