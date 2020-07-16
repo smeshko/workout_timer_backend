@@ -18,6 +18,7 @@ final class Exercise: Model {
         static let createdAt: FieldKey = "createdAt"
         static let updatedAt: FieldKey = "updatedAt"
         static let muscles: FieldKey = "muscles"
+        static let steps: FieldKey = "steps"
     }
     
     @ID() var id: UUID?
@@ -26,6 +27,7 @@ final class Exercise: Model {
     @Field(key: FieldKeys.thumbnailKey) var thumbnailKey: String?
     @Field(key: FieldKeys.level) var level: Level
     @Field(key: FieldKeys.muscles) var muscles: [String]
+    @Field(key: FieldKeys.steps) var steps: [String]
     @Timestamp(key: FieldKeys.createdAt, on: .create) var createdAt: Date?
     @Timestamp(key: FieldKeys.updatedAt, on: .update) var updatedAt: Date?
     
@@ -37,6 +39,7 @@ final class Exercise: Model {
          thumbnailKey: String? = nil,
          level: Level = .beginner,
          muscles: [String] = [],
+         steps: [String] = [],
          createdAt: Date? = nil,
          updatedAt: Date? = nil
     ) {
@@ -46,6 +49,7 @@ final class Exercise: Model {
         self.thumbnailKey = thumbnailKey
         self.level = level
         self.muscles = muscles
+        self.steps = steps
         self.createdAt = createdAt
         self.updatedAt = updatedAt
     }

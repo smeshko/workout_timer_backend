@@ -19,11 +19,6 @@ class TestSeed: Migration {
     
     func prepare(on database: Database) -> EventLoopFuture<Void> {
         database.eventLoop.flatten([            
-            WorkoutsMigration_v1_0_0().prepare(on: database),
-            WorkoutsMigration_v1_1_0().prepare(on: database),
-            WorkoutsMigration_v1_2_0().prepare(on: database),
-            WorkoutsMigration_v1_3_0().prepare(on: database),
-            WorkoutsMigration_v1_6_0().prepare(on: database),
             WorkoutsMigration_v2_0_0().prepare(on: database),
             exercises.create(on: database),
             category.create(on: database),
