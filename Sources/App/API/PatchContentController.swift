@@ -7,7 +7,7 @@ protocol PatchContentController: IdentifiableContentController where Model: Patc
 
 extension PatchContentController {
     func patch(_ req: Request) throws -> EventLoopFuture<Model.GetContent> {
-        try Model.PatchContent.validate(req)
+        try Model.PatchContent.validate(content: req)
         let input = try req.content.decode(Model.PatchContent.self)
         
         return try self.find(req)

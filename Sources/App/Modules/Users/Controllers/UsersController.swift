@@ -11,7 +11,7 @@ final class UsersController {
     }
     
     func signup(req: Request) throws -> EventLoopFuture<UserToken.GetContent> {
-        try User.CreateContent.validate(req)
+        try User.CreateContent.validate(content: req)
         let content = try req.content.decode(User.CreateContent.self)
         
         guard content.password == content.confirmPassword else {

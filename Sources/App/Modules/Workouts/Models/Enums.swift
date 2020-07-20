@@ -1,6 +1,6 @@
 import Foundation
 
-enum Level: String, Codable {
+enum Level: Int, Codable {
     case beginner, intermediate, expert
 }
 

@@ -7,7 +7,7 @@ protocol UpdateContentController: IdentifiableContentController where Model: Upd
 
 extension UpdateContentController {
     func update(_ req: Request) throws -> EventLoopFuture<Model.GetContent> {
-        try Model.UpdateContent.validate(req)
+        try Model.UpdateContent.validate(content: req)
         let input = try req.content.decode(Model.UpdateContent.self)
         
         return try self.find(req)

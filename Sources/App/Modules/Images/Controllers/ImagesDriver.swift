@@ -2,10 +2,29 @@ import Vapor
 import AWSS3
 
 final class ImagesDriver {
-    private let s3 = S3(accessKeyId: Environment.awsAccessKey,
-                        secretAccessKey: Environment.awsSecret,
-                        region: .init(rawValue: Environment.awsRegion))
 
+    private let client: AWSClient
+    private let s3: S3
+    
+    init() {
+        client = AWSClient(
+            credentialProvider: .static(accessKeyId: Environment.awsAccessKey, secretAccessKey: Environment.awsSecret),
+            httpClientProvider: .createNew
+        )
+        
+        s3 = S3(
+            client: client,
+            region: .init(rawValue: Environment.awsRegion
+            )
+        )
+    }
+    
+    deinit {
+        do {
+            try client.syncShutdown()
+        } catch {}
+    }
+    
     func getImage(req: Request) throws -> EventLoopFuture<Data> {
         let path = try req.query.get(String.self, at: "imageKey")
         

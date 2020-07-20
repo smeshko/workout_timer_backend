@@ -9,7 +9,7 @@ protocol CreateContentController: ContentController where Model: CreateContentRe
 extension CreateContentController {
     func create(_ req: Request) throws -> EventLoopFuture<Model.GetContent> {
         
-        try Model.CreateContent.validate(req)
+        try Model.CreateContent.validate(content: req)
         let input = try req.content.decode(Model.CreateContent.self)
         let model = Model()
         try model.create(input)

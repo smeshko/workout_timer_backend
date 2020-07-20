@@ -21,11 +21,14 @@ struct StagingDatabaseSeed_v1: Seed {
         ])
     }
     
-    private let sets: [ExerciseSet] = Workout.fullBoxerRoutine.sets
+    private let sets: [ExerciseSet] =
+        Workout.fullBoxerRoutine.sets +
+            Workout.quickJumpropeBurn.sets
 
     private let workouts: [Workout] =
         [
-            Workout.fullBoxerRoutine.workout
+            Workout.fullBoxerRoutine.workout,
+            Workout.quickJumpropeBurn.workout
         ]
     
     private let categories: [Category] =
