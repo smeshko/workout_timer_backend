@@ -320,6 +320,54 @@ private extension Category {
 }
 
 private extension Workout {
+    
+    static let quickJumpropeBurn: (workout: Workout, sets: [ExerciseSet]) = {
+        let workout = Workout(
+            id: UUID(uuidString: "8cb277b5-4a33-4732-990f-b79d42f162c0"),
+            name: "Quick Jumprope Burner",
+            imageKey: "images/workouts/quick-jumprope-burner.jpg",
+            thumbnailKey: "thumbnails/workouts/quick-jumprope-burner.jpg",
+            categoryId: Category.cardio.id!,
+            level: .beginner,
+            muscles: [.calves]
+        )
+        
+        let sets = [
+            ExerciseSet(workout: workout, exercise: .basicJump, duration: 60),
+            .recovery(20, workout: workout),
+            ExerciseSet(workout: workout, exercise: .boxerStep, duration: 60),
+            .recovery(20, workout: workout),
+            ExerciseSet(workout: workout, exercise: .jumpRopeFrontToBack, duration: 60),
+            .recovery(20, workout: workout),
+            ExerciseSet(workout: workout, exercise: .jumpRopeHighKnees, duration: 60),
+            .recovery(20, workout: workout),
+            ExerciseSet(workout: workout, exercise: .basicJump, duration: 60),
+            .recovery(20, workout: workout),
+            ExerciseSet(workout: workout, exercise: .boxerStep, duration: 60),
+            .recovery(20, workout: workout),
+            ExerciseSet(workout: workout, exercise: .jumpRopeSideToSide, duration: 60),
+            .recovery(20, workout: workout),
+            ExerciseSet(workout: workout, exercise: .crissCross, duration: 60),
+            .recovery(20, workout: workout),
+            ExerciseSet(workout: workout, exercise: .basicJump, duration: 60),
+            .recovery(20, workout: workout),
+            ExerciseSet(workout: workout, exercise: .boxerStep, duration: 60),
+            .recovery(20, workout: workout),
+            ExerciseSet(workout: workout, exercise: .heavyRopeJumping, duration: 60),
+            .recovery(20, workout: workout),
+            ExerciseSet(workout: workout, exercise: .crissCross, duration: 60),
+            .recovery(20, workout: workout),
+            ExerciseSet(workout: workout, exercise: .lyingHamstringStretch, duration: 45),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .quadRockers, duration: 45),
+            .recovery(10, workout: workout)
+        ]
+        
+        return (
+            workout: workout,
+            sets: sets
+        )
+    }()
 
     static let fullBoxerRoutine: (workout: Workout, sets: [ExerciseSet]) = {
         
