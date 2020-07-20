@@ -1,10 +1,6 @@
 import Fluent
 import Vapor
 
-enum ExerciseType: String, Codable {
-    case warmup, cooldown, workout,  rest
-}
-
 final class ExerciseSet: Model {
     static let schema = "exercise_sets"
     

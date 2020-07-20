@@ -20,8 +20,6 @@ public func configure(_ app: Application) throws {
     default: break
     }
     
-//    Seed.shared.prepareSeed(for: app.environment)
-
     // Configure modules
     let modules: [Module] = [
         WorkoutsModule(),
@@ -31,4 +29,5 @@ public func configure(_ app: Application) throws {
     ]
 
     try modules.forEach { try $0.configure(app) }
+//    try app.autoMigrate().wait()
 }

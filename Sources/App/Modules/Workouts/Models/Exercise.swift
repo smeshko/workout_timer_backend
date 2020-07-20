@@ -2,10 +2,6 @@ import Fluent
 import Vapor
 import WorkoutTimerAPI
 
-enum Level: String, Codable {
-    case beginner, intermediate, expert
-}
-
 final class Exercise: Model {
     static let schema = "exercises"
     
@@ -26,7 +22,7 @@ final class Exercise: Model {
     @Field(key: FieldKeys.imageKey) var imageKey: String?
     @Field(key: FieldKeys.thumbnailKey) var thumbnailKey: String?
     @Field(key: FieldKeys.level) var level: Level
-    @Field(key: FieldKeys.muscles) var muscles: [String]
+    @Field(key: FieldKeys.muscles) var muscles: [Muscle]
     @Field(key: FieldKeys.steps) var steps: [String]
     @Timestamp(key: FieldKeys.createdAt, on: .create) var createdAt: Date?
     @Timestamp(key: FieldKeys.updatedAt, on: .update) var updatedAt: Date?
@@ -38,7 +34,7 @@ final class Exercise: Model {
          imageKey: String? = nil,
          thumbnailKey: String? = nil,
          level: Level = .beginner,
-         muscles: [String] = [],
+         muscles: [Muscle] = [],
          steps: [String] = [],
          createdAt: Date? = nil,
          updatedAt: Date? = nil

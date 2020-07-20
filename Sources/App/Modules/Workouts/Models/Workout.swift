@@ -22,7 +22,7 @@ final class Workout: Model {
     @OptionalParent(key: FieldKeys.category) var category: Category?
     @Children(for: \.$workout) var exercises: [ExerciseSet]
     @Field(key: FieldKeys.level) var level: Level
-    @Field(key: FieldKeys.muscles) var muscles: [String]
+    @Field(key: FieldKeys.muscles) var muscles: [Muscle]
     @Timestamp(key: FieldKeys.createdAt, on: .create) var createdAt: Date?
     @Timestamp(key: FieldKeys.updatedAt, on: .update) var updatedAt: Date?
 
@@ -34,7 +34,7 @@ final class Workout: Model {
          thumbnailKey: String? = nil,
          categoryId: UUID? = nil,
          level: Level = .beginner,
-         muscles: [String] = [],
+         muscles: [Muscle] = [],
          createdAt: Date? = nil,
          updatedAt: Date? = nil
     ) {

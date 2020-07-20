@@ -14,10 +14,10 @@ struct ProductionDatabaseSeed_v1: Seed {
     
     func revert(on database: Database) -> EventLoopFuture<Void> {
         database.eventLoop.flatten([
-            sets.create(on: database),
-            exercises.create(on: database),
-            workouts.create(on: database),
-            categories.create(on: database)
+            sets.delete(on: database),
+            exercises.delete(on: database),
+            workouts.delete(on: database),
+            categories.delete(on: database)
         ])
     }
     
@@ -81,7 +81,7 @@ private extension Exercise {
         imageKey: "images/exercises/jumprope/criss-cross.jpg",
         thumbnailKey: "thumbnails/exercises/jumprope/criss-cross.jpg",
         level: .intermediate,
-        muscles: ["Calves"],
+        muscles: [.calves],
         steps: steps
     )
     
@@ -91,7 +91,7 @@ private extension Exercise {
         imageKey: "images/exercises/jumprope/boxer-step.jpg",
         thumbnailKey: "thumbnails/exercises/jumprope/boxer-step.jpg",
         level: .beginner,
-        muscles: ["Calves"],
+        muscles: [.calves],
         steps: steps
     )
     
@@ -101,7 +101,7 @@ private extension Exercise {
         imageKey: "images/exercises/jumprope/double-unders.jpg",
         thumbnailKey: "thumbnails/exercises/jumprope/double-unders.jpg",
         level: .expert,
-        muscles: ["Calves"],
+        muscles: [.calves],
         steps: steps
     )
     
@@ -332,7 +332,7 @@ private extension Workout {
             thumbnailKey: "thumbnails/workouts/complete-routine.jpg",
             categoryId: Category.boxing.id!,
             level: .intermediate,
-            muscles: ["Calves"]
+            muscles: [.calves]
         )
         
         return (
@@ -384,15 +384,15 @@ private extension Workout {
                 .recovery(45, workout: workout),
                 ExerciseSet(workout: workout, exercise: .plank, duration: 60),
                 .recovery(10, workout: workout),
-                ExerciseSet(workout: workout, exercise: .lyingTStretch, duration: 30),
+                ExerciseSet(workout: workout, exercise: .lyingTStretch, duration: 30, type: .cooldown),
                 .recovery(10, workout: workout),
-                ExerciseSet(workout: workout, exercise: .lyingTStretch, duration: 30),
+                ExerciseSet(workout: workout, exercise: .lyingTStretch, duration: 30, type: .cooldown),
                 .recovery(10, workout: workout),
-                ExerciseSet(workout: workout, exercise: .lyingHamstringStretch, duration: 30),
+                ExerciseSet(workout: workout, exercise: .lyingHamstringStretch, duration: 30, type: .cooldown),
                 .recovery(10, workout: workout),
-                ExerciseSet(workout: workout, exercise: .lyingHamstringStretch, duration: 30),
+                ExerciseSet(workout: workout, exercise: .lyingHamstringStretch, duration: 30, type: .cooldown),
                 .recovery(10, workout: workout),
-                ExerciseSet(workout: workout, exercise: .quadRockers, duration: 45)
+                ExerciseSet(workout: workout, exercise: .quadRockers, duration: 45, type: .cooldown)
         ])
     }()
 
