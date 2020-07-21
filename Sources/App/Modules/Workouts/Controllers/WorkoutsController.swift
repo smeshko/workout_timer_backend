@@ -22,4 +22,8 @@ struct WorkoutsController: GetContentController, ListContentController {
             }
         }
     }
+
+    func featured(_ req: Request) throws -> EventLoopFuture<[Workout.ListItem]> {
+        Workout.query(on: req.db).with(\.$exercises) { $0.with(\.$exercise) }.all().map { $0.map(\.listContent) }
+    }
 }

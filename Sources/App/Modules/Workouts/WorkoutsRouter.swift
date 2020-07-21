@@ -7,5 +7,6 @@ struct WorkoutsRouter: RouteCollection {
         
         workoutController.setupGetRoute(routes: api)
         workoutController.setupListRoute(routes: api)
+        api.get("featured", use: workoutController.featured)
     }
 }
