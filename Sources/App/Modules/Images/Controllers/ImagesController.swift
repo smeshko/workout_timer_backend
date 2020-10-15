@@ -1,7 +1,6 @@
 import struct Foundation.Data
 import Vapor
 import Fluent
-import AWSS3
 
 final class ImagesController {
     let storage = ImagesDriver()

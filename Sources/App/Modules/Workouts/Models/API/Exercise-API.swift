@@ -6,24 +6,28 @@ extension ExerciseListDto: Content {}
 
 extension Exercise: GetContentRepresentable {
     var getContent: ExerciseGetDto {
-        .init(id: id!.uuidString,
+        ExerciseGetDto(id: id!.uuidString,
               name: name,
               imageKey: imageKey ?? "",
               thumbnailKey: thumbnailKey ?? "",
               steps: steps,
               muscles: muscles.map { $0.rawValue },
-              level: level.rawValue
+              level: level.rawValue,
+              createdAt: createdAt,
+              updatedAt: updatedAt
         )
     }
 }
 
 extension Exercise: ListContentRepresentable {
     var listContent: ExerciseListDto {
-        .init(id: id!.uuidString,
+        ExerciseListDto(id: id!.uuidString,
               name: name,
               imageKey: imageKey ?? "",
               thumbnailKey: thumbnailKey ?? "",
-              level: level.rawValue
+              level: level.rawValue,
+              createdAt: createdAt,
+              updatedAt: updatedAt
         )
     }
 }

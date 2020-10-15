@@ -23,10 +23,11 @@ public func configure(_ app: Application) throws {
     // Configure modules
     let modules: [Module] = [
         WorkoutsModule(),
+        CategoriesModule(),
         UsersModule(),
         ImagesModule(),
-        CategoriesModule()
     ]
 
     try modules.forEach { try $0.configure(app) }
+    modules.forEach { $0.runSeeds(app) }
 }

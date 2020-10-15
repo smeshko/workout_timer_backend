@@ -16,8 +16,8 @@ struct WorkoutsMigration_v2_0_0: Migration {
                 .field(Exercise.FieldKeys.imageKey, .string)
                 .field(Exercise.FieldKeys.name, .string, .required)
                 .field(Exercise.FieldKeys.level, .int)
-                .field(Exercise.FieldKeys.createdAt, .date)
-                .field(Exercise.FieldKeys.updatedAt, .date)
+                .field(Exercise.FieldKeys.createdAt, .datetime)
+                .field(Exercise.FieldKeys.updatedAt, .datetime)
                 .field(Exercise.FieldKeys.muscles, .array(of: .string))
                 .field(Exercise.FieldKeys.steps, .array(of: .string))
                 .create(),
@@ -28,8 +28,8 @@ struct WorkoutsMigration_v2_0_0: Migration {
                 .field(Workout.FieldKeys.imageKey, .string)
                 .field(Workout.FieldKeys.name, .string, .required)
                 .field(Workout.FieldKeys.level, .int)
-                .field(Workout.FieldKeys.createdAt, .date)
-                .field(Workout.FieldKeys.updatedAt, .date)
+                .field(Workout.FieldKeys.createdAt, .datetime)
+                .field(Workout.FieldKeys.updatedAt, .datetime)
                 .field(Workout.FieldKeys.muscles, .array(of: .string))
                 .field(Workout.FieldKeys.category, .uuid)
                 .foreignKey(Workout.FieldKeys.category,

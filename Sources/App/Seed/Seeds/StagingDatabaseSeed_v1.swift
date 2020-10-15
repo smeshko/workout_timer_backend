@@ -23,12 +23,16 @@ struct StagingDatabaseSeed_v1: Seed {
     
     private let sets: [ExerciseSet] =
         Workout.fullBoxerRoutine.sets +
-            Workout.quickJumpropeBurn.sets
+        Workout.quickJumpropeBurn.sets +
+        Workout.jumpropeStrength.sets +
+        Workout.bodyweightJumprope.sets
 
     private let workouts: [Workout] =
         [
             Workout.fullBoxerRoutine.workout,
-            Workout.quickJumpropeBurn.workout
+            Workout.quickJumpropeBurn.workout,
+            Workout.jumpropeStrength.workout,
+            Workout.bodyweightJumprope.workout
         ]
     
     private let categories: [Category] =
@@ -323,7 +327,99 @@ private extension Category {
 }
 
 private extension Workout {
-    
+
+    static let jumpropeStrength: (workout: Workout, sets: [ExerciseSet]) = {
+        let workout = Workout(
+            id: UUID(uuidString: "fec0787f-66c5-446a-85c0-376f0348729c"),
+            name: "Jumprope Strength",
+            imageKey: "images/workouts/jumprope-strength.jpg",
+            thumbnailKey: "thumbnails/workouts/jumprope-strength.jpg",
+            categoryId: Category.strength.id!,
+            level: .intermediate,
+            muscles: [.calves]
+        )
+
+        let sets = [
+            ExerciseSet(workout: workout, exercise: .basicJump, duration: 30),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .basicJump, duration: 30),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .pushUps, duration: 60),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .heavyRopeJumping, duration: 30),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .pullUps, duration: 60),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .heavyRopeJumping, duration: 45),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .pushUps, duration: 60),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .heavyRopeJumping, duration: 30),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .pullUps, duration: 60),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .heavyRopeJumping, duration: 45),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .pushUps, duration: 60),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .heavyRopeJumping, duration: 30),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .pullUps, duration: 60),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .heavyRopeJumping, duration: 45),
+            .recovery(10, workout: workout)
+        ]
+
+        return (
+            workout: workout,
+            sets: sets
+        )
+    }()
+
+    static let bodyweightJumprope: (workout: Workout, sets: [ExerciseSet]) = {
+        let workout = Workout(
+            id: UUID(uuidString: "794bac86-7091-42e3-8c6e-542e18b452e4"),
+            name: "Bodyweight Jumprope",
+            imageKey: "images/workouts/bodyweight-jumprope.jpg",
+            thumbnailKey: "thumbnails/workouts/bodyweight-jumprope.jpg",
+            categoryId: Category.cardio.id!,
+            level: .intermediate,
+            muscles: [.calves]
+        )
+
+        let sets = [
+            ExerciseSet(workout: workout, exercise: .basicJump, duration: 45),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .pushUps, duration: 60),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .crissCross, duration: 45),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .pullUps, duration: 60),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .basicJump, duration: 45),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .pushUps, duration: 60),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .crissCross, duration: 45),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .pullUps, duration: 60),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .basicJump, duration: 45),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .pushUps, duration: 60),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .crissCross, duration: 45),
+            .recovery(10, workout: workout),
+            ExerciseSet(workout: workout, exercise: .pullUps, duration: 60),
+            .recovery(10, workout: workout)
+        ]
+
+        return (
+            workout: workout,
+            sets: sets
+        )
+    }()
+
     static let quickJumpropeBurn: (workout: Workout, sets: [ExerciseSet]) = {
         let workout = Workout(
             id: UUID(uuidString: "8cb277b5-4a33-4732-990f-b79d42f162c0"),

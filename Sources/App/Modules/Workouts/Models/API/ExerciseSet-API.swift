@@ -4,6 +4,6 @@ import Vapor
 extension ExerciseSetListDto: Content {}
 extension ExerciseSet: ListContentRepresentable {
     var listContent: ExerciseSetListDto {
-        .init(id: id!.uuidString, duration: duration, exercise: exercise.getContent, type: type.rawValue)
+        ExerciseSetListDto(id: id!.uuidString, duration: duration, exercise: exercise.getContent, type: type.rawValue)
     }
 }

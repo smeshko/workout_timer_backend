@@ -4,6 +4,11 @@ import WorkoutTimerAPI
 extension CategoryListDto: Content {}
 extension Category: ListContentRepresentable {
     var listContent: CategoryListDto {
-        .init(id: id!.uuidString, name: name, workouts: workouts.map(\.listContent))
+        CategoryListDto(id: id!.uuidString,
+              name: name,
+              workouts: workouts.map(\.listContent),
+              createdAt: createdAt,
+              updatedAt: updatedAt
+        )
     }
 }
